@@ -135,7 +135,7 @@ config:
     - type: static
       address: '${vmsrvip}'
       netmask: '255.255.240.0'
-      gateway: '172.16.15.254'
+      gateway: '192.168.15.254'
   - type: physical
     name: ens19
     subnets:
@@ -144,7 +144,7 @@ config:
       netmask: '255.255.252.0'
   - type: nameserver
     address:
-    - '172.16.15.254'
+    - '192.168.15.254'
     search:
     - 'local'
 EOF

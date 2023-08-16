@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: synology-csi
+  namespace: argocd
+spec:
+  project: cluster-wide-apps
+  source:
+    repoURL: https://github.com/SynologyOpenSource/synology-csi.git
+    path: deploy/kubernetes/v1.20
+    targetRevision: v1.1.2
+    directory:
+      recurse: true
+  ignoreDifferences:
+  - group: snapshot.storage.k8s.io
+    kind: VolumeSnapshotClass
+    name: synology-snapshotclass
+    jsonPointers:
+    - /metadata
+    - /parameters
+  - group: storage.k8s.io
+    kind: StorageClass
+    name: synology-iscsi-storage
+    jsonPointers:
+    - /metadata
+    - /parameters
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: synology-csi
+  syncPolicy:
+    automated:
+      prune: true
+    syncOptions:
+    - CreateNamespace=true

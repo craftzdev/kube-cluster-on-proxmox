@@ -1,0 +1,13 @@
+apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotClass
+metadata:
+  name: synology-snapshotclass
+  annotations:
+    snapshot.storage.kubernetes.io/is-default-class: "true"
+  labels:
+    velero.io/csi-volumesnapshot-class: "true"
+driver: csi.san.synology.com
+deletionPolicy: Retain
+parameters:
+  description: 'Kubernetes CSI' # only for iscsi protocol
+  is_locked: 'false'

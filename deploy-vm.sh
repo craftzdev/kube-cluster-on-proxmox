@@ -144,7 +144,7 @@ config:
       netmask: '255.255.252.0'
   - type: nameserver
     address:
-    - '192.168.16.254'
+    - '8.8.8.8'
     search:
     - 'local'
 EOF

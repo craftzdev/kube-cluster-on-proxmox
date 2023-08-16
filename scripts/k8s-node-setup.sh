@@ -33,9 +33,9 @@ esac
 
 # Set global variables
 TARGET_BRANCH=$2
-KUBE_API_SERVER_VIP=172.16.3.100
+KUBE_API_SERVER_VIP=192.168.3.100
 VIP_INTERFACE=ens19
-NODE_IPS=( 172.16.3.11 172.16.3.12 172.16.3.13 )
+NODE_IPS=( 192.168.3.11 192.168.3.12 192.168.3.13 )
 EXTERNAL_KUBE_API_SERVER="$(tr -dc '[:lower:]' </dev/urandom | head -c 1)$(tr -dc '[:lower:]0-9' </dev/urandom | head -c 7)-craftz-k8s-api.craftz.dev"
 
 # set per-node variables
